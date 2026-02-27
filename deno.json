@@ -1,0 +1,18 @@
+{
+  "tasks": {
+    "start": "deno run --allow-net --allow-read --allow-write main.ts",
+    "test": "deno test --allow-net --allow-read --allow-write"
+  },
+  "imports": {
+    "@changke/mybe": "jsr:@changke/mybe@^0.1.0",
+    "@std/fs": "jsr:@std/fs@^1.0.23",
+    "@std/path": "jsr:@std/path@^1.1.4",
+    "@std/assert": "jsr:@std/assert@^1.0.19"
+  },
+  "fmt": {
+    "singleQuote": true,
+    "spaceSurroundingProperties": false,
+    "trailingCommas": "never",
+    "lineWidth": 120
+  }
+}
