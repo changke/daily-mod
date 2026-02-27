@@ -150,3 +150,30 @@ Deno.test('db - deleteList', async () => {
     }
   }
 });
+
+Deno.test('db - getLists sorts by name', async () => {
+  const suffix = crypto.randomUUID();
+  const name1 = 'B List ' + suffix;
+  const name2 = 'A List ' + suffix;
+  const name3 = 'C List ' + suffix;
+  
+  const id1 = await createList(name1);
+  const id2 = await createList(name2);
+  const id3 = await createList(name3);
+
+  try {
+    const lists = await getLists();
+    // Filter to only include our test lists
+    const testLists = lists.filter(l => [name1, name2, name3].includes(l.name));
+    
+    assertEquals(testLists.length, 3);
+    assertEquals(testLists[0].name, name2); // A
+    assertEquals(testLists[1].name, name1); // B
+    assertEquals(testLists[2].name, name3); // C
+  } finally {
+    // Cleanup
+    await deleteList(id1);
+    await deleteList(id2);
+    await deleteList(id3);
+  }
+});

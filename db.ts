@@ -47,6 +47,7 @@ export async function getLists(): Promise<{id: string; name: string}[]> {
       }
     }
   }
+  lists.sort((a, b) => a.name.localeCompare(b.name));
   return lists;
 }
 
