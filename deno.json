@@ -14,5 +14,6 @@
     "spaceSurroundingProperties": false,
     "trailingCommas": "never",
     "lineWidth": 120
-  }
+  },
+  "unstable": ["temporal"]
 }
